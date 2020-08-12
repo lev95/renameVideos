@@ -16,8 +16,8 @@ def transcodeDate(date):
     #     int(mo.group(1)),
     #     int(mo.group(2)),
     #     int(mo.group(3)))
-    # dateT.replace(hour=dateT.hour + 2)
     # print(dateT)
+    # TODO?: change time based on location
 
     # Remove characters which do now work on Windows
     date = date.replace(":", "-")
@@ -41,6 +41,7 @@ def renameFile(root, file):
         encoded_date = transcodeDate(encoded_date)
         newfilepath = os.path.join(root, encoded_date + "." + file_extension)
         if filepath != newfilepath:
+            # TODO: If file already exists, create file with suffix
             os.rename(filepath, newfilepath)
             print("Renamed from: " + filepath + " to: " + newfilepath)
         else:
